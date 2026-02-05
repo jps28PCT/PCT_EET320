@@ -33,6 +33,9 @@ This allows either function to be called with the prefix `pct.`
   
   ### Example:
 ```Python
+import PCT_EET320 as pct
+pct.addr_assign()
+
 global supply  #declares that the global variable 'supply' is used
 global dmm     #declares that the global variable 'dmm' is used
 
@@ -47,6 +50,13 @@ measurement = dmm.query("MEAS:VOLT:DC?")  #Measures the voltage with the multime
 
 
   ## eng_note(Value, short)
-  This function converts a number into scientific notation representation.
-  
+  This function converts a number into scientific notation representation.</br>
+
+  ### Inputs:
+  - `Value` - The numerical value to convert into engineering notation representation.
+    - Can be type `float`, `int` or `string`
+    - If string, it must only contain numeric characters and a decimal point
+  - `short` - Boolean variable to determine whether to return 'short' or 'long' engineering notation representation
+    - `True` will make the output string contain a maximum of 5 digits
+    - `False` will make the output string contain a maximum of 6 digits after the decimal, and up to 3 digits before the decimal.  This is the default.
 </details>
