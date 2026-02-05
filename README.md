@@ -14,9 +14,11 @@ This allows either function to be called with the prefix `pct.`
   ## addr_assign()
   This function imports PyVISA and automatically opens a connection to every piece of benchtop equipment it can find.</br>
   It is able to automatically identitify and assign the USB addresses to allow easier transition between lab workstations.</br>
+  If PyVISA is not installed, this function will ask the user to allow PyVISA to be installed, and then it will be imported.</br>
   </br>
   `addr_assign()` is passed no values and returns nothing.</br>
   However, it creates global variables to be used by user-defined functions and methods.</br>
+  These variables are used to communicate with the benchtop test equipment used in lab.</br>
   The variables are:
   |VARIABLE|PURPOSE|
   |:---:|:--|
@@ -24,5 +26,19 @@ This allows either function to be called with the prefix `pct.`
   |`supply`|DC Power Supply|
   |`fungen`|Function / Arbitrary Waveform Generator|
   |`dmm`|Benchtop Multimeter|
+  </br>
+  To use one of these variables in a function, first use the `global` keyword and declare the variables you are going to use.</br>
+  Then, use the variable to make the write or query.</br>
+  Example:
+  ```Python
+  global supply  #declares that the global variable 'supply' is used
+  global dmm     #declares that the global variable 'dmm' is used
+
+  # Other code here
+
+  supply.write(CH1:VOLTage 5)               #Sets the DC power supply to 5V on channel 1
+  measurement = dmm.query("MEAS:VOLT:DC?")  #Measures the voltage with the multimeter and places the value in 'measurement'
+
+  ```
   
 </details>
