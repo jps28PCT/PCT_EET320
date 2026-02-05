@@ -38,7 +38,7 @@ global dmm     #declares that the global variable 'dmm' is used
 
 # Other code here
 
-supply.write(CH1:VOLTage 5)               #Sets the DC power supply to 5V on channel 1
+supply.write("CH1:VOLTage 5")             #Sets the DC power supply to 5V on channel 1
 measurement = dmm.query("MEAS:VOLT:DC?")  #Measures the voltage with the multimeter and places the value in 'measurement'
 
 ```
