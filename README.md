@@ -31,7 +31,7 @@ This allows either function to be called with the prefix `pct.`
   Then, use the variable to make the write or query.</br>
   </br>
   
-  Example:
+  ### Example:
 ```Python
 global supply  #declares that the global variable 'supply' is used
 global dmm     #declares that the global variable 'dmm' is used
@@ -42,5 +42,11 @@ supply.write(CH1:VOLTage 5)               #Sets the DC power supply to 5V on cha
 measurement = dmm.query("MEAS:VOLT:DC?")  #Measures the voltage with the multimeter and places the value in 'measurement'
 
 ```
+  The variables must be first declared as globals in a user-made function or method so a local variable with the same name is not instantiated. </br>
+
+
+
+  ## eng_note(Value, short)
+  This function converts a number into scientific notation representation.
   
 </details>
