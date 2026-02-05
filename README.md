@@ -29,16 +29,18 @@ This allows either function to be called with the prefix `pct.`
   </br>
   To use one of these variables in a function, first use the `global` keyword and declare the variables you are going to use.</br>
   Then, use the variable to make the write or query.</br>
+  </br>
+  
   Example:
-  ```Python
-  global supply  #declares that the global variable 'supply' is used
-  global dmm     #declares that the global variable 'dmm' is used
+```Python
+global supply  #declares that the global variable 'supply' is used
+global dmm     #declares that the global variable 'dmm' is used
 
-  # Other code here
+# Other code here
 
-  supply.write(CH1:VOLTage 5)               #Sets the DC power supply to 5V on channel 1
-  measurement = dmm.query("MEAS:VOLT:DC?")  #Measures the voltage with the multimeter and places the value in 'measurement'
+supply.write(CH1:VOLTage 5)               #Sets the DC power supply to 5V on channel 1
+measurement = dmm.query("MEAS:VOLT:DC?")  #Measures the voltage with the multimeter and places the value in 'measurement'
 
-  ```
+```
   
 </details>
