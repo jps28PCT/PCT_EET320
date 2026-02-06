@@ -49,8 +49,8 @@ measurement = dmm.query("MEAS:VOLT:DC?")  #Measures the voltage with the multime
 
 ```
   The variables must be first declared as globals in a user-made function or method so a local variable with the same name is not instantiated. </br>
-
-
+  </br>
+  </br>
 
   ## eng_note(Value, short)
   This function converts a number into scientific notation representation.</br>
