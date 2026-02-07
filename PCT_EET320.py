@@ -84,7 +84,7 @@ def eng_note(inputValue, numSigFigs =False):
 
     
         
-    if !numSigFigs:
+    if ~numSigFigs:
         returnVal = str(newVal)
     else:
         if abs(newVal) < 10:
@@ -133,4 +133,5 @@ def eng_note(inputValue, numSigFigs =False):
 
 
     
+
 
