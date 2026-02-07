@@ -45,7 +45,7 @@ def addr_assign():  # Automatically locates and assigns addresses for benchtop e
                 print("\033[1;31;40m\nPlease install PyVISA to proceed.\n\nUse the terminal command \"py -m pip install -U pyvisa\" to install using the Python package manager.\033[0m") 
                 input("\n\033[1;37;40mPress [ENTER] to close terminal.\033[38;5;0m\033[?25l")
                 print("\033[0m\033[?25h")
-                exit()
+                sys.exit(1)
                 
     rm = pyvisa.ResourceManager()
     resources = rm.list_resources()
@@ -72,22 +72,45 @@ def addr_assign():  # Automatically locates and assigns addresses for benchtop e
                 
                
                
-def eng_note(Value, short=False):
+def eng_note(inputValue, numSigFigs =0):    # Formats value in engineering notation to be displayed in a terminal.
     exponent = 0
-    newVal = float(Value)
-    while (newVal >= 1000 or newVal <= -1000) and exponent < 12:
+    newVal = float(inputValue)
+    while (abs(newVal) >= 1000) and exponent <= 24:
         exponent += 3
-        newVal = Value / 10**exponent
-    while ((newVal < 1.0 and newVal > 0.0) or (newVal > -1.0 and newVal < 0.0)) and exponent > -12:
+        newVal = float(inputValue) / 10**exponent
+    while (abs(newVal) < 1.0 )  and exponent >= -24:
         exponent -= 3
-        newVal = Value / 10**exponent
-
-    if short:
-        returnVal = returnVal = '{:0<5.4}'.format(newVal)
+        newVal = float(inputValue) / 10**exponent
+     
+    if numSigFigs == 0:
+        returnVal = str(newVal)
     else:
-        returnVal = '{:.6f}'.format(newVal)
+        if abs(newVal) < 10:
+            numsAfterDecimal = numSigFigs - 1
+        elif abs(newVal) < 100:
+            numsAfterDecimal = numSigFigs - 2
+        else:
+            numsAfterDecimal = numSigFigs - 3
+            
+        formatStr = '{: ' + str(numSigFigs) + '.' + str(numsAfterDecimal) + 'f}'
+        returnVal = formatStr.format(newVal)
+
+    if abs(exponent) > 24:
+        if numSigFigs == 0:
+            returnVal = '{:e}'.format(float(inputValue))
+        else:
+            formatStr = '{: ' + str(numSigFigs) + '.' + str(numSigFigs-1) + 'e}'
+            returnVal = formatStr.format(float(inputValue))
     
     match exponent:
+        case 24:
+            returnVal += 'Y'
+        case 21:
+            returnVal += 'Z'
+        case 18:
+            returnVal += 'E'
+        case 15:
+            returnVal += 'P'
         case 12: 
             returnVal += 'T'
         case 9: 
@@ -104,17 +127,19 @@ def eng_note(Value, short=False):
             returnVal += 'n'
         case -12:
             returnVal += 'p'
+        case -15:
+            returnVal += 'f'
+        case -18:
+            returnVal += 'a'
+        case -21:
+            returnVal += 'z'
+        case -24:
+            returnVal += 'y'
         case _:
-            pass
+            returnVal += ' '
             
     return returnVal
     
 
-    
- 
 
 
-
-
-
-    
