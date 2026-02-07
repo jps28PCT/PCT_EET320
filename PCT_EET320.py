@@ -99,7 +99,7 @@ def eng_note(inputValue, numSigFigs =0):
 
     if abs(exponent) > 24:
         if numSigFigs == 0:
-            returnVal = '{e}'.format(float(inputValue))
+            returnVal = '{:e}'.format(float(inputValue))
         else:
             formatStr = '{: ' + str(numSigFigs) + '.' + str(numSigFigs-1) + 'e}'
             returnVal = formatStr.format(float(inputValue))
@@ -151,6 +151,7 @@ def eng_note(inputValue, numSigFigs =0):
 
 
     
+
 
 
 
