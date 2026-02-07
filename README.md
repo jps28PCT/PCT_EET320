@@ -16,7 +16,7 @@ This allows either function to be called with the prefix `pct.`
 
   ## addr_assign()
   This function imports PyVISA and automatically opens a connection to every piece of benchtop equipment it can find.</br>
-  It is able to automatically identitify and assign the USB addresses to allow easier transition between lab workstations.</br>
+  It is able to automatically identify and assign the USB addresses to allow easier transition between lab workstations.</br>
   If PyVISA is not installed, this function will ask the user to allow PyVISA to be installed, and then it will be imported.</br>
   </br>
   `addr_assign()` is passed no values and returns nothing.</br>
@@ -55,7 +55,7 @@ measurement = dmm.query("MEAS:VOLT:DC?")  #Measures the voltage with the multime
 
   ## eng_note(inputValue, numSigFigs)
   This function converts a number into engineering notation representation.</br>
-  This function is intended to format data for readibillity on the terminal.  It will not be formatted correctly for use in a CSV file or Excel spreadsheet.</br>
+  This function is intended to format data for readability on the terminal.  It will not be formatted correctly for use in a CSV file or Excel spreadsheet.</br>
 
   ### Inputs:
   - `inputValue` - The numerical value to convert into engineering notation representation.
