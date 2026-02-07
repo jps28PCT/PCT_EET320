@@ -80,7 +80,7 @@ measurement = dmm.query("MEAS:VOLT:DC?")  #Measures the voltage with the multime
   | '`G`' | giga- | 10<sup>9</sup> | | '`n`' | nano- | 10<sup>-9</sup> |
   | '`M`' | mega- | 10<sup>6</sup> | | '`u`' | micro- | 10<sup>-6</sup> |
   | '`k`' | kilo- | 10<sup>3</sup>  | | '`m`' | milli- | 10<sup>-3</sup> |
-  </br>
+
 
   ### Example:
 ```Python
