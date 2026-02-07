@@ -102,7 +102,7 @@ def eng_note(inputValue, numSigFigs =0):
             returnVal = '{e}'.format(float(inputValue))
         else:
             formatStr = '{: ' + str(numSigFigs) + '.' + str(numsAfterDecimal) + 'e}'
-            returnVal = formatStr.format(str(inputValue))
+            returnVal = formatStr.format(float(inputValue))
     
     match exponent:
         case 24:
@@ -151,6 +151,7 @@ def eng_note(inputValue, numSigFigs =0):
 
 
     
+
 
 
 
