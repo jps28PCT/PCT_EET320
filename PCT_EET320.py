@@ -94,7 +94,7 @@ def eng_note(inputValue, numSigFigs =0):
         else:
             numsAfterDecimal = numSigFigs - 3
             
-        formatStr = '{:' + str(numSigFigs - numsAfterDecimal+1) + '.' + str(numsAfterDecimal) + 'f}'
+        formatStr = '{: ' + str(numSigFigs) + '.' + str(numsAfterDecimal) + 'f}'
         returnVal = formatStr.format(newVal)
     
     match exponent:
@@ -133,6 +133,7 @@ def eng_note(inputValue, numSigFigs =0):
 
 
     
+
 
 
 
