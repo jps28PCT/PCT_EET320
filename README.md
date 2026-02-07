@@ -49,7 +49,7 @@ supply.write("CH1:VOLTage 5")             #Sets the DC power supply to 5V on cha
 measurement = dmm.query("MEAS:VOLT:DC?")  #Measures the voltage with the multimeter and places the value in 'measurement'
 
 ```
-  This shows how the addr_assign() function could be used in a linear script.
+  This shows how the addr_assign() function could be used in a user-defined function.
   </br>
   </br>
 
