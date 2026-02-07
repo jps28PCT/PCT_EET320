@@ -75,10 +75,10 @@ def addr_assign():  # Automatically locates and assigns addresses for benchtop e
 def eng_note(inputValue, numSigFigs =0):
     exponent = 0
     newVal = float(inputValue)
-    while (abs(newVal) >= 1000) and exponent < 12:
+    while (abs(newVal) >= 1000) and exponent <= 24:
         exponent += 3
         newVal = float(inputValue) / 10**exponent
-    while (abs(newVal) < 1.0 )  and exponent > -12:
+    while (abs(newVal) < 1.0 )  and exponent >= -24:
         exponent -= 3
         newVal = float(inputValue) / 10**exponent
 
@@ -96,8 +96,23 @@ def eng_note(inputValue, numSigFigs =0):
             
         formatStr = '{: ' + str(numSigFigs) + '.' + str(numsAfterDecimal) + 'f}'
         returnVal = formatStr.format(newVal)
+
+    if abs(exponent) > 24:
+        if numSigFigs == 0:
+            returnVal = '{e}'.format(float(inputValue))
+        else:
+            formatStr = '{: ' + str(numSigFigs) + '.' + str(numsAfterDecimal) + 'e}'
+            returnVal = formatStr.format(str(inputValue))
     
     match exponent:
+        case 24:
+            returnVal += 'Y'
+        case 21:
+            returnVal += 'Z'
+        case 18:
+            returnVal += 'E'
+        case 15:
+            returnVal += 'P'
         case 12: 
             returnVal += 'T'
         case 9: 
@@ -114,13 +129,16 @@ def eng_note(inputValue, numSigFigs =0):
             returnVal += 'n'
         case -12:
             returnVal += 'p'
+        case -15:
+            returnVal += 'f'
+        case -18:
+            returnVal += 'a'
+        case -21:
+            returnVal += 'z'
+        case -24:
+            returnVal += 'y'
         case _:
-            if exponent == -12 and newVal < 0:
-                returnVal = formatStr.format(0)
-            elif exponent == 12 and newVal >= 1000:
-                returnVal = "Too Large"
-            else:
-                returnVal += ' '
+            returnVal += ' '
             
     return returnVal
     
@@ -133,6 +151,7 @@ def eng_note(inputValue, numSigFigs =0):
 
 
     
+
 
 
 
