@@ -101,7 +101,7 @@ def eng_note(inputValue, numSigFigs =0):
         if numSigFigs == 0:
             returnVal = '{e}'.format(float(inputValue))
         else:
-            formatStr = '{: ' + str(numSigFigs) + '.' + str(numsAfterDecimal) + 'e}'
+            formatStr = '{: ' + str(numSigFigs) + '.' + str(numSigFigs-1) + 'e}'
             returnVal = formatStr.format(float(inputValue))
     
     match exponent:
@@ -151,6 +151,7 @@ def eng_note(inputValue, numSigFigs =0):
 
 
     
+
 
 
 
