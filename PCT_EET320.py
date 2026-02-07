@@ -72,7 +72,7 @@ def addr_assign():  # Automatically locates and assigns addresses for benchtop e
                 
                
                
-def eng_note(inputValue, numSigFigs =0):
+def eng_note(inputValue, numSigFigs =0):    # Formats value in engineering notation to be displayed in a terminal.
     exponent = 0
     newVal = float(inputValue)
     while (abs(newVal) >= 1000) and exponent <= 24:
@@ -140,4 +140,5 @@ def eng_note(inputValue, numSigFigs =0):
             
     return returnVal
     
+
 
