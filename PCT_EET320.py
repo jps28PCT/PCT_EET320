@@ -72,20 +72,30 @@ def addr_assign():  # Automatically locates and assigns addresses for benchtop e
                 
                
                
-def eng_note(Value, short=False):
+def eng_note(inputValue, numSigFigs =False):
     exponent = 0
-    newVal = float(Value)
-    while (newVal >= 1000 or newVal <= -1000) and exponent < 12:
+    newVal = float(inputValue)
+    while (abs(newVal) >= 1000) and exponent < 12:
         exponent += 3
-        newVal = Value / 10**exponent
-    while ((newVal < 1.0 and newVal > 0.0) or (newVal > -1.0 and newVal < 0.0)) and exponent > -12:
+        newVal = float(inputValue) / 10**exponent
+    while (abs(newVal) < 1.0 )  and exponent > -12:
         exponent -= 3
-        newVal = Value / 10**exponent
+        newVal = float(inputValue) / 10**exponent
 
-    if short:
-        returnVal = returnVal = '{:0<5.4}'.format(newVal)
+    
+        
+    if !numSigFigs:
+        returnVal = str(newVal)
     else:
-        returnVal = '{:.6f}'.format(newVal)
+        if abs(newVal) < 10:
+            numsAfterDecimal = numSigFigs - 1
+        elif abs(newVal) < 100:
+            numsAfterDecimal = numSigFigs - 2
+        else:
+            numsAfterDecimal = numSigFigs - 3
+            
+        formatStr = '{' + str(numSigFigs - numsAfterDecimal+1) + '.' + str(numsAfterDecimal) + '}'
+        returnVal = formatStr.format(newVal)
     
     match exponent:
         case 12: 
@@ -105,7 +115,12 @@ def eng_note(Value, short=False):
         case -12:
             returnVal += 'p'
         case _:
-            pass
+            if exponent = -12 and newVal < 0:
+                returnVal = formatStr.format(0)
+            elif exponent = 12 and newVal >= 1000:
+                returnVal = "Too Large"
+            else:
+                returnVal += ' '
             
     return returnVal
     
@@ -118,3 +133,4 @@ def eng_note(Value, short=False):
 
 
     
+
