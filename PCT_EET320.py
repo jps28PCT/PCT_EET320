@@ -115,9 +115,9 @@ def eng_note(inputValue, numSigFigs =False):
         case -12:
             returnVal += 'p'
         case _:
-            if exponent = -12 and newVal < 0:
+            if exponent == -12 and newVal < 0:
                 returnVal = formatStr.format(0)
-            elif exponent = 12 and newVal >= 1000:
+            elif exponent == 12 and newVal >= 1000:
                 returnVal = "Too Large"
             else:
                 returnVal += ' '
@@ -133,5 +133,6 @@ def eng_note(inputValue, numSigFigs =False):
 
 
     
+
 
 
