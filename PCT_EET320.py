@@ -142,22 +142,3 @@ def eng_note(inputValue, numSigFigs =0):
             
     return returnVal
     
-
-    
- 
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
