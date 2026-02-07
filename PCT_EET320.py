@@ -72,7 +72,7 @@ def addr_assign():  # Automatically locates and assigns addresses for benchtop e
                 
                
                
-def eng_note(inputValue, numSigFigs =False):
+def eng_note(inputValue, numSigFigs =0):
     exponent = 0
     newVal = float(inputValue)
     while (abs(newVal) >= 1000) and exponent < 12:
@@ -84,7 +84,7 @@ def eng_note(inputValue, numSigFigs =False):
 
     
         
-    if ~numSigFigs:
+    if numSigFigs == 0:
         returnVal = str(newVal)
     else:
         if abs(newVal) < 10:
@@ -133,6 +133,7 @@ def eng_note(inputValue, numSigFigs =False):
 
 
     
+
 
 
 
