@@ -45,7 +45,7 @@ def addr_assign():  # Automatically locates and assigns addresses for benchtop e
                 print("\033[1;31;40m\nPlease install PyVISA to proceed.\n\nUse the terminal command \"py -m pip install -U pyvisa\" to install using the Python package manager.\033[0m") 
                 input("\n\033[1;37;40mPress [ENTER] to close terminal.\033[38;5;0m\033[?25l")
                 print("\033[0m\033[?25h")
-                exit()
+                sys.exit(1)
                 
     rm = pyvisa.ResourceManager()
     resources = rm.list_resources()
@@ -140,5 +140,6 @@ def eng_note(inputValue, numSigFigs =0):    # Formats value in engineering notat
             
     return returnVal
     
+
 
 
