@@ -81,9 +81,7 @@ def eng_note(inputValue, numSigFigs =0):
     while (abs(newVal) < 1.0 )  and exponent >= -24:
         exponent -= 3
         newVal = float(inputValue) / 10**exponent
-
-    
-        
+     
     if numSigFigs == 0:
         returnVal = str(newVal)
     else:
@@ -142,3 +140,4 @@ def eng_note(inputValue, numSigFigs =0):
             
     return returnVal
     
+
