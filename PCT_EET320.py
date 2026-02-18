@@ -143,7 +143,7 @@ def eng_note(inputValue, numSigFigs =0):    # Formats value in engineering notat
     return returnVal
     
 
-def scope_eng_note(inputNum):    # Formats value in VISA engineering notation for writing to devices
+def visa_eng_note(inputNum):    # Formats value in VISA engineering notation for writing to devices
     exponent = 0
     
     #Scale imputNum to be greater than 1 by increments of 1000 for engineering notation
@@ -166,5 +166,6 @@ def scope_eng_note(inputNum):    # Formats value in VISA engineering notation fo
             prefix = ''
     
     return formattedNum + prefix #Concatenate and return number with prefix
+
 
 
