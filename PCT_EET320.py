@@ -25,6 +25,8 @@ SOFTWARE.
 import sys 
 import subprocess
 
+global setup    # Flag to determine if addr_assign() has already run
+setup = False
 
 def addr_assign():  # Automatically locates and assigns addresses for benchtop equipment.
     
@@ -141,5 +143,28 @@ def eng_note(inputValue, numSigFigs =0):    # Formats value in engineering notat
     return returnVal
     
 
+def scope_eng_note(inputNum):    # Formats value in VISA engineering notation for writing to devices
+    exponent = 0
+    
+    #Scale imputNum to be greater than 1 by increments of 1000 for engineering notation
+    while abs(inputNum) < 1.0 and inputNum != 0:
+        exponent -= 3
+        inputNum =  inputNum * 1000
+    
+    #Truncate imputNum and typecast to string
+    formattedNum = f"{inputNum:.2f}"
+    
+    #Match NI-VISA engineering notation prefix based on exponent
+    match exponent:
+        case -3:
+            prefix = 'M'
+        case -6:
+            prefix = 'U'
+        case -9:
+            prefix = 'N'
+        case _:
+            prefix = ''
+    
+    return formattedNum + prefix #Concatenate and return number with prefix
 
 
