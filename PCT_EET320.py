@@ -71,7 +71,8 @@ def addr_assign():  # Automatically locates and assigns addresses for benchtop e
                 global dmm 
                 dmm = rm.open_resource(device)
                 print("\033[1;33;40mOpened Multimeter.\033[0m")
-                
+    global setup
+    setup = True            
                
                
 def eng_note(inputValue, numSigFigs =0):    # Formats value in engineering notation to be displayed in a terminal.
@@ -166,6 +167,7 @@ def visa_eng_note(inputNum):    # Formats value in VISA engineering notation for
             prefix = ''
     
     return formattedNum + prefix #Concatenate and return number with prefix
+
 
 
 
